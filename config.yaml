@@ -1,0 +1,48 @@
+name: "/web/v1"
+endpoints:
+  - url: /members
+    methods:
+      - method: GET
+        roles:
+          - "*"
+        scopes:
+          - "*"
+        destination:
+          name: health
+          host: http://service-mesh/member-finder
+          url: /members
+  - url: /members/:id
+    methods:
+      - method: GET
+        roles:
+          - "*"
+        scopes:
+          - "*"
+        destination:
+          name: health
+          host: http://service-mesh/member-finder
+          url: /members/:id
+  - url: /members/:id/locationhistory
+    methods:
+      - method: GET
+        roles:
+          - "*"
+        scopes:
+          - "*"
+        destination:
+          name: health
+          host: http://service-mesh/location-listener
+          url: /members/:id
+  - url: /location
+    methods:
+      - method: POST
+        roles:
+          - "*"
+        scopes:
+          - "*"
+        destination:
+          name: health
+          host: http://service-mesh/location-listener
+          url: /location
+
+
